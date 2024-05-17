@@ -1,4 +1,12 @@
 <resources>
     <string name="app_name">ArtBook</string>
     <string name="add_new_art">add new art</string>
+    <string name="art_name">Art Name</string>
+    <string name="artist_name">Artist Name</string>
+    <string name="year">Year</string>
+    <string name="nombre_de_la_obra">Nombre de la obra</string>
+    <string name="artista">Artista</string>
+    <string name="anio">Año</string>
+    <string name="guardar">Guardar</string>
+    <string name="buscar_imagen">Buscar imagen</string>
 </resources>
