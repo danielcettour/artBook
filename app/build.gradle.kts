@@ -2,6 +2,8 @@ plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("com.google.devtools.ksp")
+    id("com.google.dagger.hilt.android")
+    id("androidx.navigation.safeargs.kotlin")
 }
 
 android {
@@ -19,6 +21,9 @@ android {
     }
 
     buildTypes {
+        debug {
+            isDebuggable = true
+        }
         release {
             isMinifyEnabled = false
             proguardFiles(
@@ -71,8 +76,8 @@ dependencies {
 
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
-    implementation("androidx.navigation:navigation-fragment-ktx:2.7.3")
-    implementation("androidx.navigation:navigation-ui-ktx:2.7.3")
+    implementation("androidx.navigation:navigation-fragment-ktx:2.7.7")
+    implementation("androidx.navigation:navigation-ui-ktx:2.7.7")
     implementation("com.github.bumptech.glide:glide:4.13.2")
     // kapt 'com.github.bumptech.glide:compiler:4.13.2'
     ksp("com.github.bumptech.glide:ksp:4.14.2")
@@ -102,7 +107,7 @@ dependencies {
     debugImplementation("androidx.fragment:fragment-testing:1.7.0-alpha05")
     // debugImplementation ("androidx.fragment:fragment-testing:1.3.0-alpha08")
 
-    /*androidTestImplementation("androidx.test.espresso:espresso-contrib:3.5.1") {
-        exclude group : "org.checkerframework", module : "checker"
-    }*/
+    androidTestImplementation("androidx.test.espresso:espresso-contrib:3.5.1") {
+        // exclude group : "org.checkerframework", module : "checker"
+    }
 }
