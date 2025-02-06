@@ -2,7 +2,16 @@
 <project version="4">
   <component name="deploymentTargetDropDown">
     <value>
+      <entry key="ArtDaoTest">
+        <State />
+      </entry>
       <entry key="app">
+        <State />
+      </entry>
+      <entry key="deleteArtTesting()">
+        <State />
+      </entry>
+      <entry key="insertArtTesting()">
         <State />
       </entry>
     </value>

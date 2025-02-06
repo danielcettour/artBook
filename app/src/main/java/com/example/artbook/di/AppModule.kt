@@ -3,6 +3,7 @@ package com.example.artbook.di
 import android.content.Context
 import androidx.room.Room
 import com.bumptech.glide.Glide
+import com.bumptech.glide.RequestManager
 import com.bumptech.glide.request.RequestOptions
 import com.example.artbook.R
 import com.example.artbook.api.RetrofitAPI
@@ -45,16 +46,49 @@ object AppModule {
             .create(RetrofitAPI::class.java)
     }
 
-    @Singleton
+/*    @Singleton
     @Provides
-    fun injectNormalRepo(dao: ArtDao, api: RetrofitAPI) = ArtRepository(dao, api) as ArtRepositoryInterface
+    fun injectNormalRepo(dao: ArtDao, api: RetrofitAPI) = ArtRepository(dao, api) as ArtRepositoryInterface*/
+@Singleton
+@Provides
+fun provideArtRepository(dao: ArtDao, api: RetrofitAPI): ArtRepositoryInterface {
+    return ArtRepository(dao, api) // Explicitly returning an instance
+}
 
     @Singleton
+    @Provides
+    fun provideRetrofit(): Retrofit {
+        return Retrofit.Builder()
+            .baseUrl(BASE_URL) // Make sure BASE_URL is correctly defined
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+    }
+
+/*    @Singleton
+    @Provides
+    fun provideRetrofitAPI(retrofit: Retrofit): RetrofitAPI {
+        return retrofit.create(RetrofitAPI::class.java)
+    }*/
+
+/*    @Singleton
     @Provides
     fun injectGlide(@ApplicationContext context: Context) = Glide.with(context)
         .setDefaultRequestOptions(
             RequestOptions()
                 .placeholder(R.drawable.ic_launcher_foreground)
                 .error(R.drawable.ic_launcher_foreground),
-        )
+        )*/
+
+    @Singleton
+    @Provides
+    fun injectGlide(@ApplicationContext context: Context): RequestManager {
+        return Glide.with(context)
+            .setDefaultRequestOptions(
+                RequestOptions()
+                    .placeholder(R.drawable.ic_launcher_foreground)
+                    .error(R.drawable.ic_launcher_foreground),
+            )
+    }
+
+
 }
